@@ -189,34 +189,54 @@ namespace project.Migrations
                 });
 
             migrationBuilder.InsertData(
-                table: "Categories",
-                columns: new[] { "Id", "Name" },
-                values: new object[] { 1, "Comic" });
+                table: "AspNetRoles",
+                columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
+                values: new object[,]
+                {
+                    { "A", "3e45a248-a7bd-4a74-9380-974b65add70f", "Admin", "Admin" },
+                    { "B", "5518f228-b784-40a9-bd13-5fc8a46761c3", "Customer", "Customer" },
+                    { "C", "656850a8-b94f-4c8f-be91-058db4eec921", "StoreOwner", "StoreOwner" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "AspNetUsers",
+                columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
+                values: new object[,]
+                {
+                    { "1", 0, "a1fe1898-5f1d-4070-a21b-37764b49ec93", "admin@gmail.com", true, false, null, null, "admin@gmail.com", "AQAAAAEAACcQAAAAEOifCnE2iJ3MVLyVI3fO3OTn2QfHr5RjUVfSgNTQbJjg57kjbBVv4cTzxbm94XJdBA==", null, false, "14f9a68d-776d-4e89-94d3-8ed9af1e00b7", false, "admin@gmail.com" },
+                    { "2", 0, "5cbabf3f-c152-4bcd-bcaa-c301564ab97e", "customer@gmail.com", true, false, null, null, "customer@gmail.com", "AQAAAAEAACcQAAAAEI6Lf9CiSoaCZrYvnjb2gc2IEJwSlbvgNeoA8FfwZWpO+xais0eYFo2nFri3Xr+35A==", null, false, "1de5a82f-dbbf-44a0-8ad3-c5070176cad2", false, "customer@gmail.com" },
+                    { "3", 0, "1ea1dcd8-8013-4e17-8514-8adf7f536be2", "storeOwner@gmail.com", true, false, null, null, "storeOwner@gmail.com", "AQAAAAEAACcQAAAAEHkMq/ZQukw40zEtO3YjKF+a5CTg4ibE64dXzVh2Lcm6tp1R5OR39sOcZOOJXw00hw==", null, false, "18905111-c5a8-4109-98fa-98d8e3d122e3", false, "storeOwner@gmail.com" }
+                });
 
             migrationBuilder.InsertData(
                 table: "Categories",
                 columns: new[] { "Id", "Name" },
-                values: new object[] { 2, "Novel" });
+                values: new object[,]
+                {
+                    { 1, "Comic" },
+                    { 2, "Novel" },
+                    { 3, "Education" }
+                });
 
             migrationBuilder.InsertData(
-                table: "Categories",
-                columns: new[] { "Id", "Name" },
-                values: new object[] { 3, "Education" });
+                table: "AspNetUserRoles",
+                columns: new[] { "UserId", "RoleId" },
+                values: new object[,]
+                {
+                    { "1", "A" },
+                    { "2", "B" },
+                    { "3", "C" }
+                });
 
             migrationBuilder.InsertData(
                 table: "Books",
                 columns: new[] { "Id", "CategoryId", "Description", "Image", "Name", "Price" },
-                values: new object[] { 1, 1, "blalablablab", "http://pm1.narvii.com/6694/cda75d1728f061082c45dd929d482bd9fcd3d82d_00.jpg", "Conan", 50.0 });
-
-            migrationBuilder.InsertData(
-                table: "Books",
-                columns: new[] { "Id", "CategoryId", "Description", "Image", "Name", "Price" },
-                values: new object[] { 2, 2, "blalablablab", "https://memehay.com/meme/20210816/bia-sach-harry-potter-va-cai-dit-con-me-may.jpg", "Hary Potter and fuck your mom", 50.0 });
-
-            migrationBuilder.InsertData(
-                table: "Books",
-                columns: new[] { "Id", "CategoryId", "Description", "Image", "Name", "Price" },
-                values: new object[] { 3, 3, "blalablablab", "https://i.ytimg.com/vi/EXH1CBjAhpo/maxresdefault.jpg", "Hoan Rose", 50.0 });
+                values: new object[,]
+                {
+                    { 1, 1, "blalablablab", "http://pm1.narvii.com/6694/cda75d1728f061082c45dd929d482bd9fcd3d82d_00.jpg", "Conan", 50.0 },
+                    { 2, 2, "blalablablab", "https://memehay.com/meme/20210816/bia-sach-harry-potter-va-cai-dit-con-me-may.jpg", "Hary Potter and fuck your mom", 50.0 },
+                    { 3, 3, "blalablablab", "https://i.ytimg.com/vi/EXH1CBjAhpo/maxresdefault.jpg", "Hoan Rose", 50.0 }
+                });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",

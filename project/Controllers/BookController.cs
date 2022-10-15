@@ -24,12 +24,8 @@ namespace project.Controllers
             return View(context.Books.ToList());
         }
 
-        //public IActionResult List()
-        //{
-        //    return View(context.Books.ToList());
-        //}
 
-        //[Authorize(Roles = "Administrator")]
+        [Authorize(Roles = "StoreOwner")]
         public IActionResult Delete(int? id)
         {
             if (id == null)
@@ -110,5 +106,6 @@ namespace project.Controllers
                 return View(book);
             }
         }
+
     }
 }

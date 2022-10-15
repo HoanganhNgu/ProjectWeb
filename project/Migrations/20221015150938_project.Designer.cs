@@ -10,7 +10,7 @@ using project.Data;
 namespace project.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20221015074128_project")]
+    [Migration("20221015150938_project")]
     partial class project
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -46,6 +46,29 @@ namespace project.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "A",
+                            ConcurrencyStamp = "3e45a248-a7bd-4a74-9380-974b65add70f",
+                            Name = "Admin",
+                            NormalizedName = "Admin"
+                        },
+                        new
+                        {
+                            Id = "B",
+                            ConcurrencyStamp = "5518f228-b784-40a9-bd13-5fc8a46761c3",
+                            Name = "Customer",
+                            NormalizedName = "Customer"
+                        },
+                        new
+                        {
+                            Id = "C",
+                            ConcurrencyStamp = "656850a8-b94f-4c8f-be91-058db4eec921",
+                            Name = "StoreOwner",
+                            NormalizedName = "StoreOwner"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -135,6 +158,53 @@ namespace project.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "1",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "a1fe1898-5f1d-4070-a21b-37764b49ec93",
+                            Email = "admin@gmail.com",
+                            EmailConfirmed = true,
+                            LockoutEnabled = false,
+                            NormalizedUserName = "admin@gmail.com",
+                            PasswordHash = "AQAAAAEAACcQAAAAEOifCnE2iJ3MVLyVI3fO3OTn2QfHr5RjUVfSgNTQbJjg57kjbBVv4cTzxbm94XJdBA==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "14f9a68d-776d-4e89-94d3-8ed9af1e00b7",
+                            TwoFactorEnabled = false,
+                            UserName = "admin@gmail.com"
+                        },
+                        new
+                        {
+                            Id = "2",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "5cbabf3f-c152-4bcd-bcaa-c301564ab97e",
+                            Email = "customer@gmail.com",
+                            EmailConfirmed = true,
+                            LockoutEnabled = false,
+                            NormalizedUserName = "customer@gmail.com",
+                            PasswordHash = "AQAAAAEAACcQAAAAEI6Lf9CiSoaCZrYvnjb2gc2IEJwSlbvgNeoA8FfwZWpO+xais0eYFo2nFri3Xr+35A==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "1de5a82f-dbbf-44a0-8ad3-c5070176cad2",
+                            TwoFactorEnabled = false,
+                            UserName = "customer@gmail.com"
+                        },
+                        new
+                        {
+                            Id = "3",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "1ea1dcd8-8013-4e17-8514-8adf7f536be2",
+                            Email = "storeOwner@gmail.com",
+                            EmailConfirmed = true,
+                            LockoutEnabled = false,
+                            NormalizedUserName = "storeOwner@gmail.com",
+                            PasswordHash = "AQAAAAEAACcQAAAAEHkMq/ZQukw40zEtO3YjKF+a5CTg4ibE64dXzVh2Lcm6tp1R5OR39sOcZOOJXw00hw==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "18905111-c5a8-4109-98fa-98d8e3d122e3",
+                            TwoFactorEnabled = false,
+                            UserName = "storeOwner@gmail.com"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
@@ -198,6 +268,23 @@ namespace project.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetUserRoles");
+
+                    b.HasData(
+                        new
+                        {
+                            UserId = "1",
+                            RoleId = "A"
+                        },
+                        new
+                        {
+                            UserId = "2",
+                            RoleId = "B"
+                        },
+                        new
+                        {
+                            UserId = "3",
+                            RoleId = "C"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>

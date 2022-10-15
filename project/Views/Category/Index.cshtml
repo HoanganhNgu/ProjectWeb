@@ -23,9 +23,16 @@
             <td>
                 <a asp-controller="Category" asp-action="Edit" class="btn btn-warning"
                asp-route-id="@cate.Id">Edit</a>
-                <a asp-controller="Category" asp-action="Remove" class="btn btn-danger"
-               asp-route-id="@cate.Id" onclick="return confirm('Are you sure to remove ?');">Remove</a>
+                @if (User.Identity.IsAuthenticated && User.IsInRole("Administrator"))
+                {
+                    <a class="btn btn-danger" asp-controller="Category" asp-action="Delete" asp-route-id="@cate.Id"
+               onclick="return confirm('Are you sure to delete this ?');">
+                        Delete
+                    </a>
+                }
             </td>
+
+
         </tr>
     }
 </table>
