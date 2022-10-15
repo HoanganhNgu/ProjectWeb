@@ -1,0 +1,35 @@
+﻿@model project.Models.Book
+
+<div class="row text-center">
+    <div class="col">
+        <img src="@Model.Image" width="300" height="300">
+    </div>
+
+    <div class="col">
+        <table class="table table-bordered">
+            <tr>
+                <th colspan="2">@Model.Name</th>
+            </tr>
+            <tr>
+
+                <th>Image</th>
+                <th>@Model.Image</th>
+                <th>Price</th>
+                <th>$ @Model.Price </th>
+
+                <th>Description</th>
+                <th>@Model.Description</th>
+            </tr>
+            <tr>
+                <th>Category</th>
+                <td>
+                    <a asp-controller="Category" asp-action="Info"
+                       asp-route-id="@Model.Category.Id">
+                        @Model.Category.Name
+                    </a>
+                </td>
+            </tr>
+
+        </table>
+    </div>
+</div>
