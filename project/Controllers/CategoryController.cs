@@ -66,5 +66,20 @@ namespace project.Controllers
             }
             return View(category);
         }
+        public IActionResult Detail(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+            var category = context.Categories
+                                    .Include(c => c.Books)
+                                    .FirstOrDefault(c => c.Id == id);
+            //Note: khi muốn truy xuất dữ liệu của bảng B từ bảng A
+            //thì cần sử dụng Include kết hợp với FirstOrDefault
+            //còn nếu chỉ truy xuất thông tin id đơn thuần thì sử dụng
+            //Find hoặc FirstOrDefault đều được
+            return View(category);
+        }
     }
 }

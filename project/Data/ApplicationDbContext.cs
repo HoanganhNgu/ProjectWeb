@@ -71,6 +71,7 @@ namespace project.Data
 
         private void SeedRole(ModelBuilder builder)
         {
+            //1. tạo các role cho hệ thống
             var admin = new IdentityRole
             {
                 Id = "A",
@@ -89,7 +90,9 @@ namespace project.Data
                 Name = "StoreOwner",
                 NormalizedName = "StoreOwner"
             };
+            //2. add role vào trong DB
             builder.Entity<IdentityRole>().HasData(admin, customer, storeOwner);
+
         }
 
         private void SeedUserRole(ModelBuilder builder)
