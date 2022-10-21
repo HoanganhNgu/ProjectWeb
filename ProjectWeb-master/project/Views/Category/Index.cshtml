@@ -1,0 +1,51 @@
+﻿@model List<Category>
+@if (User.Identity.IsAuthenticated)
+{
+<table class="table table-info">
+    <tr>
+        <th colspan="4">Category List
+            @if (User.Identity.IsAuthenticated && User.IsInRole("StoreOwner"))
+            {
+        <a class="btn btn-success" asp-controller="Book" asp-action="Add">
+            Add
+        </a>
+        }
+        </th>
+    </tr>
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+   
+                    <th>Menu</th>
+          
+    </tr>
+    @foreach (var cate in Model)
+    {
+        <tr>
+            <td>@cate.Id</td>
+            <td>@cate.Name</td>
+
+
+            <td>
+               
+                <a asp-controller="Category" asp-action="Detail" class="btn btn-warning"
+               asp-route-id="@cate.Id">Detail</a>
+                
+               
+                @if (User.Identity.IsAuthenticated && User.IsInRole("StoreOwner"))
+                {
+                    <a asp-controller="Category" asp-action="Edit" class="btn btn-success"
+               asp-route-id="@cate.Id">Edit</a>
+
+                    <a class="btn btn-danger" asp-controller="Category" asp-action="Delete" asp-route-id="@cate.Id"
+                    onclick="return confirm('Are you sure to delete this ?');">
+                        Delete
+                    </a>
+                }
+            </td>
+
+
+        </tr>
+    }
+</table>
+}
