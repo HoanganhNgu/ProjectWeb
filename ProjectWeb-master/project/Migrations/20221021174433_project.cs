@@ -217,9 +217,9 @@ namespace project.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "A", "5ef75bd1-82fd-43aa-8ad3-651300560df4", "Admin", "Admin" },
-                    { "B", "48aea6cf-1659-4de7-98d8-201dad4bda0f", "Customer", "Customer" },
-                    { "C", "8b7e24b7-8f4d-4a0f-acdd-b81295acf875", "StoreOwner", "StoreOwner" }
+                    { "A", "586588f2-93c6-4682-b365-32eebcb02411", "Admin", "Admin" },
+                    { "B", "7ca9ff77-8e43-49cc-84c0-66db97447679", "Customer", "Customer" },
+                    { "C", "009aa3eb-e5c0-4db7-92c1-91e70079164c", "StoreOwner", "StoreOwner" }
                 });
 
             migrationBuilder.InsertData(
@@ -227,9 +227,9 @@ namespace project.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { "1", 0, "00179450-6da2-49bc-bec6-85910dcb4f71", "admin@gmail.com", true, false, null, null, "admin@gmail.com", "AQAAAAEAACcQAAAAEF7XSG/71rNE+7+40pbV6tCX9cZeqnF3hE9ydr5dUR9ryY/XqBbhVrmgZGCDU9S4zQ==", null, false, "3ddbdb2d-d419-4797-a323-7a567d3969c7", false, "admin@gmail.com" },
-                    { "2", 0, "7476036f-d217-41ef-9739-91d136a5a9fc", "customer@gmail.com", true, false, null, null, "customer@gmail.com", "AQAAAAEAACcQAAAAECEQzyiW6NPXOKPY84jg08rYxPZ13PDzX7ucSmQ8PP2dASnQ1FnRiWRBxAjextW2jA==", null, false, "c5bb1b72-376d-4e1c-96e4-809cfd08b195", false, "customer@gmail.com" },
-                    { "3", 0, "9eebbcdd-a9a5-4e2c-beed-9e82509df689", "storeOwner@gmail.com", true, false, null, null, "storeOwner@gmail.com", "AQAAAAEAACcQAAAAEEG819rfAOpP0Iiyfz0sR3PNsJeb+VhmD5f6N+JXfQoWq6vh+RHjR2+AP26E7qImsg==", null, false, "0a507409-be46-4d02-b515-92c589dfb91c", false, "storeOwner@gmail.com" }
+                    { "1", 0, "0c98bf2b-4424-42dd-ab8a-6929ba7d7681", "admin@gmail.com", true, false, null, null, "admin@gmail.com", "AQAAAAEAACcQAAAAEKvpVMwooHQuvW2DzBJUaQ4f7OjKohNGHi0UW4BC9xuL3P1CZBvMFzbsImZh1x0AaQ==", null, false, "3fbcf340-842b-4819-bf19-a02df1962c58", false, "admin@gmail.com" },
+                    { "2", 0, "9d6e42cf-4489-4300-bfac-e795fe323c5e", "customer@gmail.com", true, false, null, null, "customer@gmail.com", "AQAAAAEAACcQAAAAEK2H4DCDfYHDuOb7Ra6cOiA5lASAVNwasJVJmqEt6WYDbdXJB9Q40Bf3NEoRd+fPlA==", null, false, "21755542-0b33-4f2b-acff-664a9ea985d2", false, "customer@gmail.com" },
+                    { "3", 0, "81ad8626-5cd4-4166-b8b0-e1ca53b246d2", "storeOwner@gmail.com", true, false, null, null, "storeOwner@gmail.com", "AQAAAAEAACcQAAAAELW+oYGSzcvw5IxNPN0QThfg0y9xXfKp+xHchaOofNMVPFQYAs1js36TTpEsOhIY+A==", null, false, "369b795f-39b3-4829-b46a-e4e3fe5fbee1", false, "storeOwner@gmail.com" }
                 });
 
             migrationBuilder.InsertData(

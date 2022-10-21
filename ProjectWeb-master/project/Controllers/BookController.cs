@@ -18,8 +18,13 @@ namespace project.Controllers
             this.context = context;
         }
 
-        [Authorize]
-        public IActionResult Index()
+        [Authorize(Roles = "StoreOwner")]
+        public IActionResult StoreOwnerIndex()
+        {
+            return View(context.Books.ToList());
+        }
+        [Authorize(Roles = "Customer")]
+        public IActionResult CustomerIndex()
         {
             return View(context.Books.ToList());
         }
@@ -44,7 +49,7 @@ namespace project.Controllers
                 TempData["Message"] = "Delete book successfully !";
 
 
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(StoreOwnerIndex));
             }
         }
         [Authorize]

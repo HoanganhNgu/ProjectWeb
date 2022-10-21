@@ -19,12 +19,24 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                     <partial name="_LoginPartial" />
                     <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="h1 text mr-4" asp-controller="Book" asp-action="Index">Book</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="h1 text " asp-controller="Category" asp-action="Index">Category</a>
-                        </li>
+                        @if (User.Identity.IsAuthenticated && User.IsInRole("StoreOwner"))
+                        {
+                            <li class="nav-item">
+                                <a class="h1 text mr-4" asp-controller="Book" asp-action="StoreOwnerIndex">Book</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="h1 text " asp-controller="Category" asp-action="Index">Category</a>
+                            </li>
+                        }
+                        @if (User.Identity.IsAuthenticated && User.IsInRole("Customer"))
+                        {
+                            <li class="nav-item">
+                                <a class="h1 text mr-4" asp-controller="Book" asp-action="CustomerIndex">Book</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="h1 text " asp-controller="Category" asp-action="Index">Category</a>
+                            </li>
+                        }
                     </ul>
                 </div>
             </div>

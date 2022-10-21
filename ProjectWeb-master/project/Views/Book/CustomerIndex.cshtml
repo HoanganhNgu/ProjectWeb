@@ -1,0 +1,104 @@
+﻿@model List<Book>
+@if (User.Identity.IsAuthenticated)
+{
+    @if (TempData["Message"] != null)
+    {
+        <h5 class="alert alert-info">@TempData["Message"]</h5>
+    }
+
+    @if (TempData["Message"] == null && Model.Count == 0)
+    {
+        <h2 class="alert alert-danger">No book in DB. Add book first !</h2>
+    }
+    else
+    {
+        <div class="container mt-3 text-center">
+            <table class="table table-bordered text-center mt-3 mb-3 bg-light">
+                <tr>
+                    <th class="h3 text-primary" colspan="4">Book List</th>
+              
+
+                </tr>
+                <tr>
+                    <th colspan="3">
+                        <form method="post" asp-controller="Book" asp-action="Search">
+                            <input class="form-control" type="search" placeholder="Search by name" name="keyword" required>
+                        </form>
+                    </th>
+                    <th colspan="2">
+                        <a class="btn btn-primary" asp-controller="Book" asp-action="SortNameAsc">
+                            Asc
+                        </a>
+                        <a class="btn btn-info" asp-controller="Book" asp-action="SortNameDesc">
+                            Desc
+                        </a>
+                    </th>
+                </tr>
+                <tr>
+
+                    <th>Name</th>
+                    <th>Image</th>
+                    <th>Price</th>
+                    <th>Description</th>
+                    <th>Stock</th>
+                    <th>Menu</th>
+
+                </tr>
+                @foreach (var book in Model)
+                {
+                    <tr>
+
+
+                        <td>@book.Name</td>
+
+                        <td>
+
+                            <img src="@book.Image" width="100" dsds height="100" />
+
+                        </td>
+                        <td>
+                            $ @book.Price
+                        </td>
+
+
+                        <td>
+                            @book.Description
+                        </td>
+
+                        <td>
+                            @book.Stock
+                        </td>
+
+                        <td>
+
+                            <a class="btn btn-warning" asp-controller="Book" asp-action="Detail" asp-route-id="@book.Id">
+                                Detail
+                            </a>
+
+
+                            @*                       <a>
+
+                <form method="post" asp-controller="Order" asp-action="MakeOrder">
+                <input type="hidden" name="book" value="@book.Id">
+                <input type="number" name="stock" min="1" max="@book.Stock"><br>
+                <input type="submit" value="Order">
+                </form>
+                </a>*@
+
+
+                            @if (User.Identity.IsAuthenticated && User.IsInRole("Customer"))
+                            {
+                                <a class="btn" asp-controller="Order" asp-action="MakeOrder">
+                                    <input type="hidden" name="book" value="@book.Id">
+                                    <input type="number" name="stock" min="1" max="@book.Stock"><br>
+                                    <input type="submit" value="Order">
+                                </a>
+                            }
+                        </td>
+                    </tr>
+                }
+            </table>
+        </div>
+    }
+}
+
