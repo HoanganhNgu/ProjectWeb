@@ -52,14 +52,23 @@ namespace project.Controllers
                 return RedirectToAction(nameof(StoreOwnerIndex));
             }
         }
-        [Authorize]
-        public IActionResult Detail(int id)
+        [Authorize(Roles = "StoreOwner")]
+        public IActionResult StoreOwnerDetail(int id)
         {
             var book = context.Books
                                  .Include(b => b.Category)
                                  .FirstOrDefault(b => b.Id == id);
             return View(book);
         }
+        [Authorize(Roles = "Customer")]
+        public IActionResult CustomerDetail(int id)
+        {
+            var book = context.Books
+                                 .Include(b => b.Category)
+                                 .FirstOrDefault(b => b.Id == id);
+            return View(book);
+        }
+
         [Authorize(Roles = "StoreOwner")]
         [HttpGet]
         public IActionResult Add()
