@@ -25,7 +25,7 @@
                                 <a class="h1 text mr-4" asp-controller="Book" asp-action="StoreOwnerIndex">Book</a>
                             </li>
                             <li class="nav-item">
-                                <a class="h1 text " asp-controller="Category" asp-action="Index">Category</a>
+                                <a class="h1 text " asp-controller="Category" asp-action="StoreOwnerIndex">Category</a>
                             </li>
                         }
                         @if (User.Identity.IsAuthenticated && User.IsInRole("Customer"))
@@ -34,7 +34,7 @@
                                 <a class="h1 text mr-4" asp-controller="Book" asp-action="CustomerIndex">Book</a>
                             </li>
                             <li class="nav-item">
-                                <a class="h1 text " asp-controller="Category" asp-action="Index">Category</a>
+                                <a class="h1 text " asp-controller="Category" asp-action="CustomerIndex">Category</a>
                             </li>
                         }
                     </ul>

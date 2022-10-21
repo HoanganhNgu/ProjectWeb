@@ -21,7 +21,7 @@
                             <td>@book.Id</td>
                             <td>@book.Name</td>
                             <td>
-                                <a asp-controller="Book" asp-action="Detail" asp-route-id="@book.Id">
+                                <a asp-controller="Book" asp-action="StoreOwnerDetail" asp-route-id="@book.Id">
                                     <img src="@book.Image" width="80" height="80">
                                 </a>
                             </td>
@@ -30,6 +30,6 @@
                 </table>
             </div>
         </div>
-        
+
     </div>
 </div>

@@ -18,8 +18,14 @@ namespace project.Controllers
         {
             this.context = context;
         }
-        [Authorize]
-        public IActionResult Index()
+        [Authorize(Roles ="StoreOwner")]
+        public IActionResult StoreOwnerIndex()
+        {
+            var categories = context.Categories.ToList();
+            return View(categories);
+        }
+        [Authorize(Roles ="Customer")]
+        public IActionResult CustomerIndex()
         {
             var categories = context.Categories.ToList();
             return View(categories);
@@ -30,7 +36,7 @@ namespace project.Controllers
             var category = context.Categories.Find(id);
             context.Categories.Remove(category);
             context.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("StoreOwnerIndex");
         }
         [Authorize(Roles = "StoreOwner")]
         [HttpGet]
@@ -46,7 +52,7 @@ namespace project.Controllers
             {
                 context.Categories.Add(category);
                 context.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("StoreOwnerIndex");
             }
             return View(category);
         }
@@ -65,12 +71,24 @@ namespace project.Controllers
             {
                 context.Categories.Update(category);
                 context.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("StoreOwnerIndex");
             }
             return View(category);
         }
-        [Authorize]
-        public IActionResult Detail(int? id)
+        [Authorize(Roles ="StoreOwner")]
+        public IActionResult StoreOwnerDetail(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+            var category = context.Categories
+                                    .Include(c => c.Books)
+                                    .FirstOrDefault(c => c.Id == id);
+            return View(category);
+        }
+        [Authorize(Roles = "Customer")]
+        public IActionResult CustomerDetail(int? id)
         {
             if (id == null)
             {
