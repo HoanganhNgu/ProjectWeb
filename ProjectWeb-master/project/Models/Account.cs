@@ -1,13 +1,13 @@
-﻿using System.Collections.Generic;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 namespace project.Models
 {
-    public class Account
+    public class Account : IndetityUser
     {
         public int Id { get; set; }
         [Required]
-        public string Name { get; set; }
-        [Required]
-        public string Password { get; set; }
+        public string Email { get; set; }
+        
     }
 }

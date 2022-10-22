@@ -10,7 +10,7 @@ using project.Data;
 namespace project.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20221022022548_project")]
+    [Migration("20221022041431_project")]
     partial class project
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -51,21 +51,21 @@ namespace project.Migrations
                         new
                         {
                             Id = "A",
-                            ConcurrencyStamp = "02b79f46-c4f8-4307-9036-4252315ac2fd",
+                            ConcurrencyStamp = "afd5c24e-0dfc-44d6-adce-f64fa7900efe",
                             Name = "Admin",
                             NormalizedName = "Admin"
                         },
                         new
                         {
                             Id = "B",
-                            ConcurrencyStamp = "91621a7c-bf10-4d21-b87f-1c210e7b67fe",
+                            ConcurrencyStamp = "031ffeb2-e6d1-4aef-a7df-a4af927a20ac",
                             Name = "Customer",
                             NormalizedName = "Customer"
                         },
                         new
                         {
                             Id = "C",
-                            ConcurrencyStamp = "89fe78ac-c96e-42d8-864b-0fea446f4be9",
+                            ConcurrencyStamp = "bc0d3eb3-0704-42ff-bd64-301f6288d0ba",
                             Name = "StoreOwner",
                             NormalizedName = "StoreOwner"
                         });
@@ -164,14 +164,14 @@ namespace project.Migrations
                         {
                             Id = "1",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "6f05a41e-87a1-47b4-9865-7b1acab3f8dd",
+                            ConcurrencyStamp = "8bde27ab-308c-432d-b344-b5c1deabbb0d",
                             Email = "admin@gmail.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedUserName = "admin@gmail.com",
-                            PasswordHash = "AQAAAAEAACcQAAAAELOva0EGD8CMfmPH+sQ9bKfdyvCTA2Ef2b7Zx0slpL/nTrr9rCLJtNxd3HZ4YEZqrg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEATNHl3F3jupsolgWICG8YPwVSC7zg4K3ZjHGZqq/8JpTYEey6yLQ+KNMUn3rEbv8g==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "54bb4814-18c9-451c-8a92-01b0f847ab75",
+                            SecurityStamp = "ac6db007-c639-4826-8d3f-a7cd8c3b2c90",
                             TwoFactorEnabled = false,
                             UserName = "admin@gmail.com"
                         },
@@ -179,14 +179,14 @@ namespace project.Migrations
                         {
                             Id = "2",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "115edb38-cf73-487d-8bbe-e5f00621779d",
+                            ConcurrencyStamp = "ba17c461-e8f5-45ad-88cf-39ea8c1a739c",
                             Email = "customer@gmail.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedUserName = "customer@gmail.com",
-                            PasswordHash = "AQAAAAEAACcQAAAAEEnJszty/Jdi6a36ajgGnnUOiUhz/txXeM8dU1WM/GhuIDJt9c/BPxwPoSaRDseEzQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEGFW070+kGCwWdblnfk7TqcaeS9ivp1JQdZIa50X5zF0XOx7h8MnYlfPV78fJbjZjQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "de2ea274-b4e0-4804-9346-1ecc2e38c5e5",
+                            SecurityStamp = "3a70f168-685f-41ef-b1c6-6fcc1d9c8826",
                             TwoFactorEnabled = false,
                             UserName = "customer@gmail.com"
                         },
@@ -194,14 +194,14 @@ namespace project.Migrations
                         {
                             Id = "3",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "f8d2df1c-5e4e-4d34-9186-19ece0c6ae50",
+                            ConcurrencyStamp = "2015f5e8-25b1-48aa-8fcd-40555f21e196",
                             Email = "storeOwner@gmail.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedUserName = "storeOwner@gmail.com",
-                            PasswordHash = "AQAAAAEAACcQAAAAEOchkQfJJOoT0tcEAMGDzi9OThSOgLxVND83T1vRSTY8+ukpMh655+gz7be9Ajsx1g==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEOmBREn/12hSQlbwFw/1vEp7B9YrvUA9a7tQXoRU/AdxrDVfoZCpuZo2FQy24zcReA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "0a157260-d46a-45b1-be04-c9133fd43408",
+                            SecurityStamp = "7afda953-9b03-4a31-8b0e-cc0e71c37d0e",
                             TwoFactorEnabled = false,
                             UserName = "storeOwner@gmail.com"
                         });
@@ -306,6 +306,25 @@ namespace project.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
+                });
+
+            modelBuilder.Entity("project.Models.Account", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Accounts");
                 });
 
             modelBuilder.Entity("project.Models.Book", b =>
