@@ -119,15 +119,28 @@ namespace project.Controllers
                 return View(book);
             }
         }
-        public IActionResult SortNameAsc()
+        [Authorize(Roles = "StoreOwner")]
+        public IActionResult SOSortNameAsc()
         {
-            return View("Index", context.Books.OrderBy( b=> b.Name).ToList());
+            return View("StoreOwnerIndex", context.Books.OrderBy( b=> b.Name).ToList());
+        }
+        [Authorize(Roles ="StoreOwner")]
+        public IActionResult SOSortNameDesc()
+        {
+            return View("StoreOwnerIndex", context.Books.OrderByDescending(b => b.Name).ToList());
         }
 
-        public IActionResult SortNameDesc()
+        [Authorize(Roles = "Customer")]
+        public IActionResult CUSSortNameAsc()
         {
-            return View("Index", context.Books.OrderByDescending(b => b.Name).ToList());
+            return View("CustomerIndex", context.Books.OrderBy(b => b.Name).ToList());
         }
+        [Authorize(Roles = "Customer")]
+        public IActionResult CUSSortNameDesc()
+        {
+            return View("CustomerIndex", context.Books.OrderByDescending(b => b.Name).ToList());
+        }
+
         [Authorize]
         [HttpPost]
         public IActionResult Search(string keyword)
