@@ -37,6 +37,15 @@
                                 <a class="h1 text " asp-controller="Category" asp-action="CustomerIndex">Category</a>
                             </li>
                         }
+                        @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                        {
+                            <li class="nav-item">
+                                <a class="h1 text " asp-controller="Account" asp-action="StoreOwnerAccount">StoreOwnerAccount</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="h1 text " asp-controller="Account" asp-action="CustomerAccount">CustomerAccount</a>
+                            </li>
+                        }
                     </ul>
                 </div>
             </div>
