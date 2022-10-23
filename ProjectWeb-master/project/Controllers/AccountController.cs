@@ -19,7 +19,7 @@ namespace project.Controllers
         {
             this.context = context;
         }
-        //[Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin")]
         public IActionResult Index()
         {
 
