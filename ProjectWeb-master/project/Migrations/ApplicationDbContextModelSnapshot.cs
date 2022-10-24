@@ -49,21 +49,21 @@ namespace project.Migrations
                         new
                         {
                             Id = "A",
-                            ConcurrencyStamp = "afd5c24e-0dfc-44d6-adce-f64fa7900efe",
+                            ConcurrencyStamp = "656ca655-57da-4f71-8eb4-4505f8fd265e",
                             Name = "Admin",
                             NormalizedName = "Admin"
                         },
                         new
                         {
                             Id = "B",
-                            ConcurrencyStamp = "031ffeb2-e6d1-4aef-a7df-a4af927a20ac",
+                            ConcurrencyStamp = "ec7c6006-78a0-48f6-b493-b52695ae4b64",
                             Name = "Customer",
                             NormalizedName = "Customer"
                         },
                         new
                         {
                             Id = "C",
-                            ConcurrencyStamp = "bc0d3eb3-0704-42ff-bd64-301f6288d0ba",
+                            ConcurrencyStamp = "e3d33744-90e5-498a-9193-b5fee3d264c7",
                             Name = "StoreOwner",
                             NormalizedName = "StoreOwner"
                         });
@@ -162,14 +162,14 @@ namespace project.Migrations
                         {
                             Id = "1",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "8bde27ab-308c-432d-b344-b5c1deabbb0d",
+                            ConcurrencyStamp = "00f4e37e-dcee-4359-9909-e36add640de8",
                             Email = "admin@gmail.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedUserName = "admin@gmail.com",
-                            PasswordHash = "AQAAAAEAACcQAAAAEATNHl3F3jupsolgWICG8YPwVSC7zg4K3ZjHGZqq/8JpTYEey6yLQ+KNMUn3rEbv8g==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEM4QG7OxM95TZMVUcxCoXMNkwqRf51gakrTxxNV806kuEkFQ95bWNOathb/7o2GWyQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "ac6db007-c639-4826-8d3f-a7cd8c3b2c90",
+                            SecurityStamp = "03c8a680-58ca-42d0-ae3f-641923e576e3",
                             TwoFactorEnabled = false,
                             UserName = "admin@gmail.com"
                         },
@@ -177,14 +177,14 @@ namespace project.Migrations
                         {
                             Id = "2",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "ba17c461-e8f5-45ad-88cf-39ea8c1a739c",
+                            ConcurrencyStamp = "2df5623c-ce86-4f3c-9322-f56f4799317e",
                             Email = "customer@gmail.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedUserName = "customer@gmail.com",
-                            PasswordHash = "AQAAAAEAACcQAAAAEGFW070+kGCwWdblnfk7TqcaeS9ivp1JQdZIa50X5zF0XOx7h8MnYlfPV78fJbjZjQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEEtmZNeoqSavGCBiLFfp6Tk/fUL+Kb5IZ7qq6tfdZmon1ISNkEQYEqoqui9dJdDMZQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "3a70f168-685f-41ef-b1c6-6fcc1d9c8826",
+                            SecurityStamp = "c4f69bb7-4c58-4f76-a186-d03c681c3e20",
                             TwoFactorEnabled = false,
                             UserName = "customer@gmail.com"
                         },
@@ -192,14 +192,14 @@ namespace project.Migrations
                         {
                             Id = "3",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "2015f5e8-25b1-48aa-8fcd-40555f21e196",
+                            ConcurrencyStamp = "3f29e8d0-8795-46e4-8079-79320f477b27",
                             Email = "storeOwner@gmail.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedUserName = "storeOwner@gmail.com",
-                            PasswordHash = "AQAAAAEAACcQAAAAEOmBREn/12hSQlbwFw/1vEp7B9YrvUA9a7tQXoRU/AdxrDVfoZCpuZo2FQy24zcReA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEOsC58lj/Dc3mPELBhaoBxNu7yiqYc/b2N4ynDE3sb8IWDR8ObDqm28900WrTyQTXw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "7afda953-9b03-4a31-8b0e-cc0e71c37d0e",
+                            SecurityStamp = "1a0cd9ce-589d-4ecd-9dd4-55792ae79a48",
                             TwoFactorEnabled = false,
                             UserName = "storeOwner@gmail.com"
                         });
@@ -314,9 +314,6 @@ namespace project.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Email")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("UserName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
