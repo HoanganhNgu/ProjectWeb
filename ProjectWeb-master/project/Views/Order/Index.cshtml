@@ -1,0 +1,50 @@
+﻿@model List<Order>
+@if (User.Identity.IsAuthenticated && User.IsInRole("StoreOwner"))
+{
+    <table class="table table-info">
+        
+        <tr>
+            <th>Id</th>
+            <th>Customer</th>
+            <th>OrderDate</th>
+            <th>OrderStock</th>
+            <th>BookId</th>
+            <th>IsAccepted</th>
+
+            <th>Menu</th>
+
+        </tr>
+        @foreach (var order in Model)
+        {
+            <tr>
+                <td>@order.Id</td>
+                <td>@order.Customer</td>
+
+
+                <td>
+                    @order.OrderDate
+                </td>
+                <td>@order.OrderStock</td>
+                <td>@order.BookId</td>
+                <td>@order.IsAccepted</td>
+                <td>
+
+
+                    @if (User.Identity.IsAuthenticated && User.IsInRole("StoreOwner"))
+                    {
+
+                        <a asp-controller="Order" asp-action="IsAccepted" class="btn btn-success" asp-route-id="@order.Id">
+                            Accept
+                        </a>
+
+                        @*<a class="btn btn-danger">
+                            Deny
+                        </a>*@
+                    }
+                </td>
+
+            </tr>
+
+        }
+    </table>
+}

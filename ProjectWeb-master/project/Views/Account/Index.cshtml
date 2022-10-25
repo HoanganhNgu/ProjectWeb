@@ -2,28 +2,14 @@
     <div class="container">
         <table class="table table-bordered text-center">
             <tr>
-            
                 <th>Email Customer</th>
-             
-              
             </tr>
-            @{
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Email</td>
+                </tr>
                 
-                    foreach (var item in ViewBag.Role)
-                    {
-                        if (item.Id == "B")
-                        {
-                            foreach (var item2 in ViewBag.UR)
-                            {
-                                if (item2.UserId == "2")
-                                {
-                                    <td>Email</td>
-                                }
-                            }
-                        }
-                    }
-               
-                }    
             }
             
         </table>

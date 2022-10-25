@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace project.Models
 {
@@ -10,9 +11,12 @@ namespace project.Models
         public string Customer { get; set; }
         public DateTime OrderDate { get; set; }
         public int OrderStock { get; set; }
-        public double OrderPrice { get; set; }
 
         public int BookId { get; set; }
+
+        [Required]
+        public char IsAccepted { get; set; }
+
         public Book Book { get; set; }
     }
 }
