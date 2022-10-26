@@ -1,7 +1,7 @@
 ﻿@model project.Models.Order
 
 <form method="post" asp-controller="Order" asp-action="IsAccepted">
-  
+    <h2 class="cangiua gachchan">Order</h2>
     <div class="form-group">
         <label class="h4 text-success" asp-for="@Model.IsAccepted"></label><br />
         @if (Model.IsAccepted == 'A')
@@ -15,7 +15,7 @@
         }
         else
         {
-            <span>Accept </span>
+            <span>Accept</span>
 
             <input type="radio" name="IsAccepted" value='A'>
             <span>Decline </span>
@@ -26,6 +26,6 @@
         <span class="text-danger" asp-validation-for="@Model.IsAccepted"></span>
     </div>
     <div class="form-group">
-        <input type="submit" class="btn btn-warning" value="IsAccepted" />
+        <input type="submit" class="btn btn-warning" value="Submit" />
     </div>
 </form>

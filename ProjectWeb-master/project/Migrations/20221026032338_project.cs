@@ -208,7 +208,8 @@ namespace project.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Customer = table.Column<string>(nullable: true),
+                    Customer = table.Column<string>(nullable: false),
+                    Address = table.Column<string>(nullable: false),
                     OrderDate = table.Column<DateTime>(nullable: false),
                     OrderStock = table.Column<int>(nullable: false),
                     BookId = table.Column<int>(nullable: false),
@@ -230,9 +231,9 @@ namespace project.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "A", "6cb0a53d-65c0-4481-b162-685304f46a80", "Admin", "Admin" },
-                    { "B", "c71d4315-b1f5-4b08-9551-bf60e8e1eb55", "Customer", "Customer" },
-                    { "C", "24a205ba-67da-4821-8f04-793283f5026f", "StoreOwner", "StoreOwner" }
+                    { "A", "84dcd9d3-246d-4c74-a1e1-8c62014cca86", "Admin", "Admin" },
+                    { "B", "7520677f-d3a0-473c-a6b4-81aad476f869", "Customer", "Customer" },
+                    { "C", "c747afe7-f5dd-4a9f-9a9a-7805adfa7a55", "StoreOwner", "StoreOwner" }
                 });
 
             migrationBuilder.InsertData(
@@ -240,9 +241,9 @@ namespace project.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { "1", 0, "c3bdccba-713a-4767-976b-a93bd685d317", "admin@gmail.com", true, false, null, null, "admin@gmail.com", "AQAAAAEAACcQAAAAEPBC/2sZ8keDCyMYUMFX0eLE3hcS4n/vsqlCbW33DgIBiOHMSKt4Jg6BBJDPRvl1Bw==", null, false, "feaa006b-4215-43ff-bfb5-fc26e3ec071f", false, "admin@gmail.com" },
-                    { "2", 0, "ff6b3dd7-8ccd-4349-b345-17378117821b", "customer@gmail.com", true, false, null, null, "customer@gmail.com", "AQAAAAEAACcQAAAAEDgTWi952QD9vt94fBMZwXaCc7Y1Pczj05jjsejP77KHC9UNvA6D+DyY6NSSdTGoHA==", null, false, "7c953bcd-713d-4ca2-b8df-251db068f6b0", false, "customer@gmail.com" },
-                    { "3", 0, "a6a4f48d-14da-4670-9591-f38d703bb753", "storeOwner@gmail.com", true, false, null, null, "storeOwner@gmail.com", "AQAAAAEAACcQAAAAEGxU/0UKe5RLTp0QjnntI7nZqVA/IX8us5PAbheZidXVJxnZW+1LzmGIYspUMYhKkg==", null, false, "3327f6d9-6ef6-4630-be7b-fe30e797b3ea", false, "storeOwner@gmail.com" }
+                    { "1", 0, "644906ff-04e2-410b-aae0-e3a1295ce2c9", "admin@gmail.com", true, false, null, null, "admin@gmail.com", "AQAAAAEAACcQAAAAEMW7btxeVL3vFkUITsRe3gpBSnD1cp2q384/tdE01PGtxIgk8qWeaQkLw0FUOaD6EA==", null, false, "f0dfb068-5d0a-458d-bd05-5db5101f0d21", false, "admin@gmail.com" },
+                    { "2", 0, "16492401-a838-49df-8fee-64dd9140d086", "customer@gmail.com", true, false, null, null, "customer@gmail.com", "AQAAAAEAACcQAAAAENQqPMmAkO2HbaQ7tcNrOk8kAlSY7I13IHIkYAXMfFFFX6yr/DS/c7T1n2x+RNQBvQ==", null, false, "76597db9-511e-42d3-941b-ba4d6a39b31d", false, "customer@gmail.com" },
+                    { "3", 0, "61b404a6-1442-4277-9ed5-4fd71f87a53f", "storeOwner@gmail.com", true, false, null, null, "storeOwner@gmail.com", "AQAAAAEAACcQAAAAEP+ihdAwnCWWWQZFCRKkkT0ohtMeCOBwHG+TNWhme5onPNHNvjT4qSUXlk7vMNlNGg==", null, false, "4ccb6082-a731-48a5-8cf2-40d10f6c9b3a", false, "storeOwner@gmail.com" }
                 });
 
             migrationBuilder.InsertData(

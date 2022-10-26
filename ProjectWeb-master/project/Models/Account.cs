@@ -8,6 +8,8 @@ namespace project.Models
         public int Id { get; set; }
         [Required]
         public string Email { get; set; }
-        
+    
+ 
+
     }
 }

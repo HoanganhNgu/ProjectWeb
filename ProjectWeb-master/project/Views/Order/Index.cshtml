@@ -1,5 +1,5 @@
 ﻿@model List<Order>
-@if (User.Identity.IsAuthenticated && User.IsInRole("StoreOwner"))
+@if (User.Identity.IsAuthenticated)
 {
     <table class="table table-info">
         
@@ -19,8 +19,6 @@
             <tr>
                 <td>@order.Id</td>
                 <td>@order.Customer</td>
-
-
                 <td>
                     @order.OrderDate
                 </td>
@@ -36,10 +34,10 @@
                         <a asp-controller="Order" asp-action="IsAccepted" class="btn btn-success" asp-route-id="@order.Id">
                             Accept
                         </a>
-
-                        @*<a class="btn btn-danger">
-                            Deny
-                        </a>*@
+                        <a asp-controller="Order" asp-action="Delete" class="btn btn-danger" asp-route-id="@order.Id">
+                            Delete
+                        </a>
+                        
                     }
                 </td>
 

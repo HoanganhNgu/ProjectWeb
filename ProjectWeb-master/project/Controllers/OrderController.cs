@@ -28,11 +28,13 @@ namespace project.Controllers
             context.SaveChanges();
             return View();
         }
+        [Authorize(Roles = "StoreOwner")]
         public IActionResult Index()
         {
             var orders = context.Orders.ToList();
             return View(orders);
         }
+
         [Authorize(Roles = "StoreOwner")]
         [HttpGet]
         public IActionResult IsAccepted(int id)
@@ -53,5 +55,28 @@ namespace project.Controllers
             return View(order);
         }
 
+        [Authorize(Roles = "StoreOwner")]
+        public IActionResult Delete(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+
+                var order = context.Orders.Find(id);
+
+                context.Orders.Remove(order);
+
+                context.SaveChanges();
+
+
+                TempData["Message"] = "Delete order successfully !";
+
+
+                return RedirectToAction(nameof(Index));
+            }
+        }
     }
 }
