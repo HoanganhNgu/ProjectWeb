@@ -86,9 +86,9 @@ namespace project.Controllers
             else
             {
 
-                var account = context.Accounts.Find(id);
+                var account = context.Users.Find(id);
 
-                context.Accounts.Remove(account);
+                context.Users.Remove(account);
 
                 context.SaveChanges();
 
