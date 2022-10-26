@@ -8,6 +8,7 @@ using project.Models;
 using Microsoft.AspNetCore.Authorization;
 using System.Data;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 
 namespace project.Controllers
 {
@@ -28,47 +29,57 @@ namespace project.Controllers
             ViewBag.UR = context.UserRoles.ToList();
             return View(users);
         }
-
-        [Authorize(Roles = "Admin")]
-        public IActionResult Remove(int id)
+        public IActionResult Edit()
         {
-            var account = context.Accounts.Find(id);
-            context.Accounts.Remove(account);
-            context.SaveChanges();
-            return RedirectToAction("Index");
-        }
+            string id = Request.Form["id"];
+            string old_pass = Request.Form["oldpass"];
+            string new_pass = Request.Form["newpass"];
+            string confirm_pass = Request.Form["confirmpassword"];
 
-        [Authorize(Roles = "Admin")]
-        [HttpGet]
-        public IActionResult Edit(int id)
-        {
-            var account = context.Accounts.Find(id);
-            return View(account);
-        }
+            ViewData["OldPass"] = old_pass;
+            ViewData["NewPass"] = new_pass;
+            ViewData["ConfirmPassword"] = confirm_pass;
 
-        [HttpPost]
-        public IActionResult Edit(Account account)
-        {
-            if (ModelState.IsValid)
+            var list_users = context.Users.ToList();
+            var user = list_users.Find(p => p.Id == id);
+
+            var passwordHasher = new PasswordHasher<ApplicationUser>();
+
+            var temp_user = new ApplicationUser
             {
-                context.Accounts.Update(account);
-                context.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            return View(account);
-        }
-        [Authorize(Roles = "Admin")]
-        public IActionResult Detail(int? id)
-        {
-            if (id == null)
+                Id = id,
+                UserName = user.UserName,
+                Email = user.Email,
+                PasswordHash = user.PasswordHash,
+            };
+
+            var result = passwordHasher.VerifyHashedPassword(temp_user, user.PasswordHash, old_pass);
+
+            if (result == PasswordVerificationResult.Success)
             {
-                return NotFound();
+                if (new_pass == confirm_pass)
+                {
+                    var new_hash = passwordHasher.HashPassword(temp_user, new_pass);
+                    user.PasswordHash = new_hash;
+                    context.Users.Update(user);
+                    context.SaveChanges();
+                    return Redirect("/Admin/Reset");
+                }
+                else
+                {
+                    ViewBag.Error1 = "Confirm password is not match";
+                    return View("Edit", user);
+                }
             }
-            var account = context.Accounts;
-            //.Include(a => a.Books)
-            //.FirstOrDefault(a => a.Id == id);
-            return View(account);
+            else
+            {
+                ViewBag.Error2 = "Old password is not match";
+                return View("Edit", user);
+            }
         }
+
+ 
+  
 
     }
 }

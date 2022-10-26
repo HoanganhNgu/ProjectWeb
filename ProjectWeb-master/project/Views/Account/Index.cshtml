@@ -23,7 +23,7 @@
                     @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
                     {
 
-                        <a class="btn btn-success">
+                        <a class="btn btn-success" asp-controller="Account" asp-action="Edit" asp-route-id="@account.Id">
                             Reset
                         </a>
                         <a class="btn btn-danger">

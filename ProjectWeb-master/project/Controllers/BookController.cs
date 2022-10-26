@@ -119,18 +119,18 @@ namespace project.Controllers
                 return View(book);
             }
         }
-        [Authorize(Roles = "StoreOwner")]
+
         public IActionResult SOSortNameAsc()
         {
             return View("StoreOwnerIndex", context.Books.OrderBy( b=> b.Name).ToList());
         }
-        [Authorize(Roles ="StoreOwner")]
+
         public IActionResult SOSortNameDesc()
         {
             return View("StoreOwnerIndex", context.Books.OrderByDescending(b => b.Name).ToList());
         }
 
-        [Authorize(Roles = "Customer")]
+
         public IActionResult CUSSortNameAsc()
         {
             return View("CustomerIndex", context.Books.OrderBy(b => b.Name).ToList());
@@ -141,7 +141,7 @@ namespace project.Controllers
             return View("CustomerIndex", context.Books.OrderByDescending(b => b.Name).ToList());
         }
 
-        [Authorize]
+
         [HttpPost]
         public IActionResult Search(string keyword)
         {

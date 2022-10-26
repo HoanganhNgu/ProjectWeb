@@ -1,6 +1,5 @@
 ﻿@model List<Book>
-@if (User.Identity.IsAuthenticated)
-{
+
     @if (TempData["Message"] != null)
     {
         <h5 class="alert alert-info">@TempData["Message"]</h5>
@@ -86,8 +85,7 @@
                 </a>*@
 
 
-                            @if (User.Identity.IsAuthenticated && User.IsInRole("Customer"))
-                            {
+
                                 @*<a class="btn" asp-controller="Order" asp-action="MakeOrder">*@
                                     <form method="post" asp-controller="Order" asp-action="MakeOrder">
                                     <input type="hidden" name="book" value="@book.Id">
@@ -95,12 +93,12 @@
                                     <input type="submit" value="Order">
                                     </form>
                                 @*</a>*@
-                            }
+                            
                         </td>
                     </tr>
                 }
             </table>
         </div>
     }
-}
+
 
