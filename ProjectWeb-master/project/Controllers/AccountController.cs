@@ -43,9 +43,9 @@ namespace project.Controllers
             var list_users = context.Users.ToList();
             var user = list_users.Find(p => p.Id == id);
 
-            var passwordHasher = new PasswordHasher<ApplicationUser>();
+            var passwordHasher = new PasswordHasher<Account>();
 
-            var temp_user = new ApplicationUser
+            var temp_user = new Account
             {
                 Id = id,
                 UserName = user.UserName,
@@ -77,9 +77,30 @@ namespace project.Controllers
                 return View("Edit", user);
             }
         }
+        public IActionResult Delete(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+            else
+            {
 
- 
-  
+                var account = context.Accounts.Find(id);
+
+                context.Accounts.Remove(account);
+
+                context.SaveChanges();
+
+
+                TempData["Message"] = "Delete user successfully !";
+
+
+                return RedirectToAction(nameof(Index));
+            }
+        }
+
+
 
     }
 }
