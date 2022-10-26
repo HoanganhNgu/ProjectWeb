@@ -77,7 +77,7 @@ namespace project.Controllers
                 return View("Edit", user);
             }
         }
-        public IActionResult Delete(int? id)
+        public IActionResult Delete(string? id)
         {
             if (id == null)
             {
