@@ -23,7 +23,8 @@ namespace project.Controllers
         {
             return View(context.Books.ToList());
         }
-        [Authorize(Roles = "Customer")]
+        [Route("/")]
+        //[Authorize(Roles = "Customer")]
         public IActionResult CustomerIndex()
         {
             return View(context.Books.ToList());
@@ -135,7 +136,7 @@ namespace project.Controllers
         {
             return View("CustomerIndex", context.Books.OrderBy(b => b.Name).ToList());
         }
-        [Authorize(Roles = "Customer")]
+ 
         public IActionResult CUSSortNameDesc()
         {
             return View("CustomerIndex", context.Books.OrderByDescending(b => b.Name).ToList());

@@ -24,7 +24,7 @@ namespace project.Controllers
             var categories = context.Categories.ToList();
             return View(categories);
         }
-        [Authorize(Roles ="Customer")]
+        //[Authorize(Roles ="Customer")]
         public IActionResult CustomerIndex()
         {
             var categories = context.Categories.ToList();
