@@ -19,6 +19,8 @@ namespace project.Models
         [Required]
 
         public int BookId { get; set; }
+        [Required]
+        public int Total { get; set; }
 
         [Required]
         public char IsAccepted { get; set; }

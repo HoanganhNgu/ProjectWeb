@@ -23,7 +23,7 @@ namespace project.Controllers
         {
             return View(context.Books.ToList());
         }
-        [Route("/")]
+        //[Route("/")]
         //[Authorize(Roles = "Customer")]
         public IActionResult CustomerIndex()
         {

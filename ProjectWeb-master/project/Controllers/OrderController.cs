@@ -5,6 +5,7 @@ using project.Models;
 using System;
 using System.Data;
 using System.Linq;
+using System.Security.Claims;
 
 namespace project.Controllers
 {
@@ -18,12 +19,18 @@ namespace project.Controllers
             this.context = context;
         }
         [Authorize(Roles = "Customer")]
-        public IActionResult MakeOrder(int book, int stock)
+        public IActionResult MakeOrder(int book, int stock, int price)
         {
             var order = new Order();
-            order.OrderStock = book;
+            
+
+            
+            
+
+            order.OrderStock = stock;
             order.BookId = book;
             order.OrderDate = DateTime.Now;
+            order.Total = price * stock;
             context.Orders.Add(order);
             context.SaveChanges();
             return View();
@@ -31,6 +38,14 @@ namespace project.Controllers
         [Authorize(Roles = "StoreOwner")]
         public IActionResult Index()
         {
+            ViewBag.User = context.Users.ToList();
+            var claimIdentity = (ClaimsIdentity)User.Identity;
+            var claims = claimIdentity.FindFirst(ClaimTypes.NameIdentifier);
+
+
+            string currentUserId = claims.Value;
+            ViewBag.Hihi = currentUserId;
+
             var orders = context.Orders.ToList();
             return View(orders);
         }

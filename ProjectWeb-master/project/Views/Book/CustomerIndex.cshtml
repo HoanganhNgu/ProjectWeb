@@ -89,7 +89,8 @@
                                 @*<a class="btn" asp-controller="Order" asp-action="MakeOrder">*@
                                     <form method="post" asp-controller="Order" asp-action="MakeOrder">
                                     <input type="hidden" name="book" value="@book.Id">
-                                    <input type="number" name="stock" min="1" max="@book.Stock"><br>
+                                    <input type="number" name="stock" min="1" max="@book.Stock">
+                                    <input type="hidden" name="price" value="@book.Price"><br>
                                     <input type="submit" value="Order">
                                     </form>
                                 @*</a>*@

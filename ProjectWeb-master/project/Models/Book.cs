@@ -19,9 +19,11 @@ namespace project.Models
 
         [Required]
         [Range(1, 9999, ErrorMessage = "range is from 1 to 9999")]
-        public double Price { get; set; }
+        public int Price { get; set; }
 
         [Required]
+        [MinLength(1, ErrorMessage = "Book's name length must be at least 1 characters")]
+        [MaxLength(1000, ErrorMessage = "Max name length is 100 characters")]
         public string Description { get; set; }
 
         [Required]

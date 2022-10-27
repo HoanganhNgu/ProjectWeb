@@ -9,6 +9,7 @@
             <th>OrderDate</th>
             <th>OrderStock</th>
             <th>BookId</th>
+            <th>Total</th>
             <th>IsAccepted</th>
 
             <th>Menu</th>
@@ -18,12 +19,21 @@
         {
             <tr>
                 <td>@order.Id</td>
-                <td>@order.Customer</td>
+                @for (int i = 0; i < ViewBag.User.Count; i++)
+                {
+                    if (ViewBag.User[i].Id == ViewBag.Hihi)
+                    {
+                        <td>@ViewBag.User[i].Email</td>
+                    }
+                    
+                }
+                
                 <td>
                     @order.OrderDate
                 </td>
                 <td>@order.OrderStock</td>
                 <td>@order.BookId</td>
+                <td>@order.Total $</td>
                 <td>@order.IsAccepted</td>
                 <td>
 

@@ -43,9 +43,9 @@ namespace project.Controllers
             var list_users = context.Users.ToList();
             var user = list_users.Find(p => p.Id == id);
 
-            var passwordHasher = new PasswordHasher<Account>();
+            var passwordHasher = new PasswordHasher<IdentityUser>();
 
-            var temp_user = new Account
+            var temp_user = new IdentityUser
             {
                 Id = id,
                 UserName = user.UserName,

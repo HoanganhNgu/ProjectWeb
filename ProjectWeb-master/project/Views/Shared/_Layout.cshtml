@@ -31,22 +31,21 @@
                                 <a class="h1 text mr-4" asp-controller="Order" asp-action="Index">Order</a>
                             </li>
                         }
-@*                        @if (User.Identity.IsAuthenticated && User.IsInRole("Customer"))
-                        {*@
+                        else if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                        {
+                            <li class="nav-item">
+                                <a class="h1 text " asp-controller="Account" asp-action="Index">Account</a>
+                            </li>
+                         
+                        }
+                        else
+                        {
                             <li class="nav-item">
                                 <a class="h1 text mr-4" asp-controller="Book" asp-action="CustomerIndex">Book</a>
                             </li>
                             <li class="nav-item">
                                 <a class="h1 text mr-4" asp-controller="Category" asp-action="CustomerIndex">Category</a>
                             </li>
-                           
-                       @* }*@
-                        @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
-                        {
-                            <li class="nav-item">
-                                <a class="h1 text " asp-controller="Account" asp-action="Index">Account</a>
-                            </li>
-                         
                         }
                     </ul>
                 </div>

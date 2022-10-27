@@ -187,8 +187,8 @@ namespace project.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(maxLength: 100, nullable: false),
                     Image = table.Column<string>(nullable: false),
-                    Price = table.Column<double>(nullable: false),
-                    Description = table.Column<string>(nullable: false),
+                    Price = table.Column<int>(nullable: false),
+                    Description = table.Column<string>(maxLength: 1000, nullable: false),
                     Stock = table.Column<int>(nullable: false),
                     CategoryId = table.Column<int>(nullable: false)
                 },
@@ -213,6 +213,7 @@ namespace project.Migrations
                     OrderDate = table.Column<DateTime>(nullable: false),
                     OrderStock = table.Column<int>(nullable: false),
                     BookId = table.Column<int>(nullable: false),
+                    Total = table.Column<int>(nullable: false),
                     IsAccepted = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
@@ -231,9 +232,9 @@ namespace project.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "A", "ebdeb38d-57bf-4735-9af4-2ad55c6ceeb0", "Admin", "Admin" },
-                    { "B", "bba8b6a7-cf77-46ca-babc-9635622649fa", "Customer", "Customer" },
-                    { "C", "c27ee314-7c5a-4e91-a8ea-6687338a3bd6", "StoreOwner", "StoreOwner" }
+                    { "A", "4f1adbc6-f40f-4a41-8d4a-a55562b2586a", "Admin", "Admin" },
+                    { "B", "bdbebc01-28ef-4a8b-acd6-9fc5b04b4982", "Customer", "Customer" },
+                    { "C", "fbe7d4a9-bd94-44ba-823f-99e1a5d89dde", "StoreOwner", "StoreOwner" }
                 });
 
             migrationBuilder.InsertData(
@@ -241,9 +242,9 @@ namespace project.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { "1", 0, "98738616-b4ef-4da1-b12e-155d0d12f9c5", "admin@gmail.com", true, false, null, null, "admin@gmail.com", "AQAAAAEAACcQAAAAEACfYfuA06SPqBYHUZ86JEDi9uSY5fzMMspsn2oo5h7DnAvhYBZ6fUAWk5xCLTEVeQ==", null, false, "5acab441-dbf4-4622-84b6-c154e46683de", false, "admin@gmail.com" },
-                    { "2", 0, "89cd7f80-dd8e-46b1-b1e0-95754b61fd0c", "customer@gmail.com", true, false, null, null, "customer@gmail.com", "AQAAAAEAACcQAAAAEGeJS6vZy+jBX+Sff2Dqy/CyMvyEfJN3ndJPtBv7BngDd/h0SkbXp7T6Wx6F8iU9qQ==", null, false, "25f0a6ab-444c-4bd1-b665-a1244975d582", false, "customer@gmail.com" },
-                    { "3", 0, "c5fd2259-f077-4c5f-9396-4c781227b43f", "storeOwner@gmail.com", true, false, null, null, "storeOwner@gmail.com", "AQAAAAEAACcQAAAAEL0kpCkdHU+ihRNP5epV1FNjEFuSV75ntah6oQiIF7gGXT6fc5NPIZuCAVM/O2rjPQ==", null, false, "4a3953c7-61e3-4262-b020-a7b9bc30d165", false, "storeOwner@gmail.com" }
+                    { "1", 0, "2c1877e8-2154-4d1b-86ce-2ac2c39f22fc", "admin@gmail.com", true, false, null, null, "admin@gmail.com", "AQAAAAEAACcQAAAAEFhY9rb6R/tdl+8/X492OIKtqQDdr53Kk61vTOz5yaKvSnFKK7uNDDjxtHS4HV7EBQ==", null, false, "16481b12-954c-4aab-9b6f-6f25a1fd4b14", false, "admin@gmail.com" },
+                    { "2", 0, "6b1293c2-8698-4406-bc8a-ecbceea01fa3", "customer@gmail.com", true, false, null, null, "customer@gmail.com", "AQAAAAEAACcQAAAAELiGRBgzaCrblvZeKU1Pm7ApqxMwzQIbCQOIrGojF1aQn0Iql8qsV7FmVHZ9tsvUlw==", null, false, "fdcc2dab-65c3-4431-aca6-755e0a77a4e2", false, "customer@gmail.com" },
+                    { "3", 0, "f73f82bc-8f83-476b-8dcf-95bb7490f52c", "storeOwner@gmail.com", true, false, null, null, "storeOwner@gmail.com", "AQAAAAEAACcQAAAAENW5Py0ryjLkMREoj35Nsdq1NKCCcr0vbDviZqfRoGbJhiah/cWhtyKNYQItUO+w+A==", null, false, "2feea4bc-588b-43f7-8940-ef1ca22172fa", false, "storeOwner@gmail.com" }
                 });
 
             migrationBuilder.InsertData(
@@ -271,9 +272,9 @@ namespace project.Migrations
                 columns: new[] { "Id", "CategoryId", "Description", "Image", "Name", "Price", "Stock" },
                 values: new object[,]
                 {
-                    { 1, 1, "blalablablab", "http://pm1.narvii.com/6694/cda75d1728f061082c45dd929d482bd9fcd3d82d_00.jpg", "Conan", 50.0, 30 },
-                    { 2, 2, "blalablablab", "https://memehay.com/meme/20210816/bia-sach-harry-potter-va-cai-dit-con-me-may.jpg", "Hary Potter and fuck your mom", 50.0, 30 },
-                    { 3, 3, "blalablablab", "https://i.ytimg.com/vi/EXH1CBjAhpo/maxresdefault.jpg", "Hoan Rose", 50.0, 30 }
+                    { 1, 1, "blalablablab", "http://pm1.narvii.com/6694/cda75d1728f061082c45dd929d482bd9fcd3d82d_00.jpg", "Conan", 50, 30 },
+                    { 2, 2, "blalablablab", "https://memehay.com/meme/20210816/bia-sach-harry-potter-va-cai-dit-con-me-may.jpg", "Hary Potter and fuck your mom", 50, 30 },
+                    { 3, 3, "blalablablab", "https://i.ytimg.com/vi/EXH1CBjAhpo/maxresdefault.jpg", "Hoan Rose", 50, 30 }
                 });
 
             migrationBuilder.CreateIndex(

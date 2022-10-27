@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 namespace project.Models
 {
-    public class Account 
+    public class Account
     {
         public string Id { get; set; }
         public string UserName { get; set; }

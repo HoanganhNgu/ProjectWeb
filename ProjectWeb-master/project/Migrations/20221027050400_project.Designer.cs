@@ -10,7 +10,7 @@ using project.Data;
 namespace project.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20221026135947_project")]
+    [Migration("20221027050400_project")]
     partial class project
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -51,21 +51,21 @@ namespace project.Migrations
                         new
                         {
                             Id = "A",
-                            ConcurrencyStamp = "ebdeb38d-57bf-4735-9af4-2ad55c6ceeb0",
+                            ConcurrencyStamp = "4f1adbc6-f40f-4a41-8d4a-a55562b2586a",
                             Name = "Admin",
                             NormalizedName = "Admin"
                         },
                         new
                         {
                             Id = "B",
-                            ConcurrencyStamp = "bba8b6a7-cf77-46ca-babc-9635622649fa",
+                            ConcurrencyStamp = "bdbebc01-28ef-4a8b-acd6-9fc5b04b4982",
                             Name = "Customer",
                             NormalizedName = "Customer"
                         },
                         new
                         {
                             Id = "C",
-                            ConcurrencyStamp = "c27ee314-7c5a-4e91-a8ea-6687338a3bd6",
+                            ConcurrencyStamp = "fbe7d4a9-bd94-44ba-823f-99e1a5d89dde",
                             Name = "StoreOwner",
                             NormalizedName = "StoreOwner"
                         });
@@ -164,14 +164,14 @@ namespace project.Migrations
                         {
                             Id = "1",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "98738616-b4ef-4da1-b12e-155d0d12f9c5",
+                            ConcurrencyStamp = "2c1877e8-2154-4d1b-86ce-2ac2c39f22fc",
                             Email = "admin@gmail.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedUserName = "admin@gmail.com",
-                            PasswordHash = "AQAAAAEAACcQAAAAEACfYfuA06SPqBYHUZ86JEDi9uSY5fzMMspsn2oo5h7DnAvhYBZ6fUAWk5xCLTEVeQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEFhY9rb6R/tdl+8/X492OIKtqQDdr53Kk61vTOz5yaKvSnFKK7uNDDjxtHS4HV7EBQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "5acab441-dbf4-4622-84b6-c154e46683de",
+                            SecurityStamp = "16481b12-954c-4aab-9b6f-6f25a1fd4b14",
                             TwoFactorEnabled = false,
                             UserName = "admin@gmail.com"
                         },
@@ -179,14 +179,14 @@ namespace project.Migrations
                         {
                             Id = "2",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "89cd7f80-dd8e-46b1-b1e0-95754b61fd0c",
+                            ConcurrencyStamp = "6b1293c2-8698-4406-bc8a-ecbceea01fa3",
                             Email = "customer@gmail.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedUserName = "customer@gmail.com",
-                            PasswordHash = "AQAAAAEAACcQAAAAEGeJS6vZy+jBX+Sff2Dqy/CyMvyEfJN3ndJPtBv7BngDd/h0SkbXp7T6Wx6F8iU9qQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAELiGRBgzaCrblvZeKU1Pm7ApqxMwzQIbCQOIrGojF1aQn0Iql8qsV7FmVHZ9tsvUlw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "25f0a6ab-444c-4bd1-b665-a1244975d582",
+                            SecurityStamp = "fdcc2dab-65c3-4431-aca6-755e0a77a4e2",
                             TwoFactorEnabled = false,
                             UserName = "customer@gmail.com"
                         },
@@ -194,14 +194,14 @@ namespace project.Migrations
                         {
                             Id = "3",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "c5fd2259-f077-4c5f-9396-4c781227b43f",
+                            ConcurrencyStamp = "f73f82bc-8f83-476b-8dcf-95bb7490f52c",
                             Email = "storeOwner@gmail.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedUserName = "storeOwner@gmail.com",
-                            PasswordHash = "AQAAAAEAACcQAAAAEL0kpCkdHU+ihRNP5epV1FNjEFuSV75ntah6oQiIF7gGXT6fc5NPIZuCAVM/O2rjPQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAENW5Py0ryjLkMREoj35Nsdq1NKCCcr0vbDviZqfRoGbJhiah/cWhtyKNYQItUO+w+A==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "4a3953c7-61e3-4262-b020-a7b9bc30d165",
+                            SecurityStamp = "2feea4bc-588b-43f7-8940-ef1ca22172fa",
                             TwoFactorEnabled = false,
                             UserName = "storeOwner@gmail.com"
                         });
@@ -339,7 +339,8 @@ namespace project.Migrations
 
                     b.Property<string>("Description")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(1000)")
+                        .HasMaxLength(1000);
 
                     b.Property<string>("Image")
                         .IsRequired()
@@ -350,8 +351,8 @@ namespace project.Migrations
                         .HasColumnType("nvarchar(100)")
                         .HasMaxLength(100);
 
-                    b.Property<double>("Price")
-                        .HasColumnType("float");
+                    b.Property<int>("Price")
+                        .HasColumnType("int");
 
                     b.Property<int>("Stock")
                         .HasColumnType("int");
@@ -370,7 +371,7 @@ namespace project.Migrations
                             Description = "blalablablab",
                             Image = "http://pm1.narvii.com/6694/cda75d1728f061082c45dd929d482bd9fcd3d82d_00.jpg",
                             Name = "Conan",
-                            Price = 50.0,
+                            Price = 50,
                             Stock = 30
                         },
                         new
@@ -380,7 +381,7 @@ namespace project.Migrations
                             Description = "blalablablab",
                             Image = "https://memehay.com/meme/20210816/bia-sach-harry-potter-va-cai-dit-con-me-may.jpg",
                             Name = "Hary Potter and fuck your mom",
-                            Price = 50.0,
+                            Price = 50,
                             Stock = 30
                         },
                         new
@@ -390,7 +391,7 @@ namespace project.Migrations
                             Description = "blalablablab",
                             Image = "https://i.ytimg.com/vi/EXH1CBjAhpo/maxresdefault.jpg",
                             Name = "Hoan Rose",
-                            Price = 50.0,
+                            Price = 50,
                             Stock = 30
                         });
                 });
@@ -449,6 +450,9 @@ namespace project.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<int>("OrderStock")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Total")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
