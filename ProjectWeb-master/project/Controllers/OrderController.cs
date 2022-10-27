@@ -39,10 +39,11 @@ namespace project.Controllers
         [HttpGet]
         public IActionResult IsAccepted(int id)
         {
+            
             var order = context.Orders.Find(id);
             return View(order);
         }
-
+     
         [HttpPost]
         public IActionResult IsAccepted(Order order)
         {
@@ -50,7 +51,8 @@ namespace project.Controllers
             {
                 context.Orders.Update(order);
                 context.SaveChanges();
-                return RedirectToAction("Index");
+               
+                return RedirectToAction("index");
             }
             return View(order);
         }

@@ -1,7 +1,22 @@
 ﻿@model project.Models.Order
 
 <form method="post" asp-controller="Order" asp-action="IsAccepted">
-    <h2 class="cangiua gachchan">Order</h2>
+    <h2>Order</h2>
+    <div class="form-group">
+        <label class="h4 text-success">Customer</label>
+        <input readonly type="text" class="form-control" asp-for="@Model.Customer" />
+        <span class="text-danger" asp-validation-for="@Model.Customer"></span>
+    </div>
+    <div class="form-group">
+        <label class="h4 text-success" asp-for="@Model.OrderDate">OrderDate</label>
+        <input readonly type="text" class="form-control" asp-for="@Model.OrderDate" />
+        <span class="text-danger" asp-validation-for="@Model.OrderDate"></span>
+    </div>
+    <div class="form-group">
+        <label class="h4 text-success" asp-for="@Model.OrderStock">OrderStock</label>
+        <input readonly class="form-control" asp-for="@Model.OrderStock" />
+        <span class="text-danger" asp-validation-for="@Model.OrderStock"></span>
+    </div>
     <div class="form-group">
         <label class="h4 text-success" asp-for="@Model.IsAccepted"></label><br />
         @if (Model.IsAccepted == 'A')
@@ -22,7 +37,6 @@
 
             <input type="radio" name="IsAccepted" value='D' checked>
         }
-
         <span class="text-danger" asp-validation-for="@Model.IsAccepted"></span>
     </div>
     <div class="form-group">
