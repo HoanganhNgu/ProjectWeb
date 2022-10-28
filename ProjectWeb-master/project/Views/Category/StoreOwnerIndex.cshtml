@@ -7,7 +7,7 @@
                 Category List
                 @if (User.Identity.IsAuthenticated && User.IsInRole("StoreOwner"))
                 {
-                    <a class="btn btn-success" asp-controller="Book" asp-action="Add">
+                    <a class="btn btn-success" asp-controller="Category" asp-action="Add">
                         Add
                     </a>
                 }
@@ -39,7 +39,7 @@
                         <a asp-controller="Category" asp-action="Edit" class="btn btn-success"
                asp-route-id="@cate.Id">Edit</a>
 
-                        <a class="btn btn-danger" asp-controller="Category" asp-action="Delete" asp-route-id="@cate.Id"
+                        <a class="btn btn-danger" asp-controller="Category" asp-action="Remove" asp-route-id="@cate.Id"
                onclick="return confirm('Are you sure to delete this ?');">
                             Delete
                         </a>

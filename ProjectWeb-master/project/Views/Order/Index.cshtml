@@ -8,9 +8,10 @@
             <th>Customer</th>
             <th>OrderDate</th>
             <th>OrderStock</th>
+
             <th>BookId</th>
             <th>Total</th>
-            <th>IsAccepted</th>
+
 
             <th>Menu</th>
 
@@ -19,22 +20,16 @@
         {
             <tr>
                 <td>@order.Id</td>
-                @for (int i = 0; i < ViewBag.User.Count; i++)
-                {
-                    if (ViewBag.User[i].Id == ViewBag.Hihi)
-                    {
-                        <td>@ViewBag.User[i].Email</td>
-                    }
-                    
-                }
+                <th>@order.Customer </th>
                 
                 <td>
                     @order.OrderDate
                 </td>
                 <td>@order.OrderStock</td>
+
                 <td>@order.BookId</td>
-                <td>@order.Total $</td>
-                <td>@order.IsAccepted</td>
+                <td>$@order.Total</td>
+ 
                 <td>
 
 
@@ -45,7 +40,7 @@
                             Accept
                         </a>
                         <a asp-controller="Order" asp-action="Delete" class="btn btn-danger" asp-route-id="@order.Id">
-                            Delete
+                            Decline
                         </a>
                         
                     }

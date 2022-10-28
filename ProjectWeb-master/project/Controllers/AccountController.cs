@@ -29,54 +29,54 @@ namespace project.Controllers
             ViewBag.UR = context.UserRoles.ToList();
             return View(users);
         }
-        public IActionResult Edit()
-        {
-            string id = Request.Form["id"];
-            string old_pass = Request.Form["oldpass"];
-            string new_pass = Request.Form["newpass"];
-            string confirm_pass = Request.Form["confirmpassword"];
+        //public IActionResult Edit()
+        //{
+        //    string id = Request.Form["id"];
+        //    string old_pass = Request.Form["oldpass"];
+        //    string new_pass = Request.Form["newpass"];
+        //    string confirm_pass = Request.Form["confirmpassword"];
 
-            ViewData["OldPass"] = old_pass;
-            ViewData["NewPass"] = new_pass;
-            ViewData["ConfirmPassword"] = confirm_pass;
+        //    ViewData["OldPass"] = old_pass;
+        //    ViewData["NewPass"] = new_pass;
+        //    ViewData["ConfirmPassword"] = confirm_pass;
 
-            var list_users = context.Users.ToList();
-            var user = list_users.Find(p => p.Id == id);
+        //    var list_users = context.Users.ToList();
+        //    var user = list_users.Find(p => p.Id == id);
 
-            var passwordHasher = new PasswordHasher<IdentityUser>();
+        //    var passwordHasher = new PasswordHasher<IdentityUser>();
 
-            var temp_user = new IdentityUser
-            {
-                Id = id,
-                UserName = user.UserName,
-                Email = user.Email,
-                PasswordHash = user.PasswordHash,
-            };
+        //    var temp_user = new IdentityUser
+        //    {
+        //        Id = id,
+        //        UserName = user.UserName,
+        //        Email = user.Email,
+        //        PasswordHash = user.PasswordHash,
+        //    };
 
-            var result = passwordHasher.VerifyHashedPassword(temp_user, user.PasswordHash, old_pass);
+        //    var result = passwordHasher.VerifyHashedPassword(temp_user, user.PasswordHash, old_pass);
 
-            if (result == PasswordVerificationResult.Success)
-            {
-                if (new_pass == confirm_pass)
-                {
-                    var new_hash = passwordHasher.HashPassword(temp_user, new_pass);
-                    user.PasswordHash = new_hash;
-                    context.Users.Update(user);
-                    context.SaveChanges();
-                    return Redirect("/Admin/Reset");
-                }
-                else
-                {
-                    ViewBag.Error1 = "Confirm password is not match";
-                    return View("Edit", user);
-                }
-            }
-            else
-            {
-                ViewBag.Error2 = "Old password is not match";
-                return View("Edit", user);
-            }
-        }
+        //    if (result == PasswordVerificationResult.Success)
+        //    {
+        //        if (new_pass == confirm_pass)
+        //        {
+        //            var new_hash = passwordHasher.HashPassword(temp_user, new_pass);
+        //            user.PasswordHash = new_hash;
+        //            context.Users.Update(user);
+        //            context.SaveChanges();
+        //            return Redirect("/Admin/Reset");
+        //        }
+        //        else
+        //        {
+        //            ViewBag.Error1 = "Confirm password is not match";
+        //            return View("Edit", user);
+        //        }
+        //    }
+        //    else
+        //    {
+        //        ViewBag.Error2 = "Old password is not match";
+        //        return View("Edit", user);
+        //    }
+        //}
         public IActionResult Delete(string? id)
         {
             if (id == null)

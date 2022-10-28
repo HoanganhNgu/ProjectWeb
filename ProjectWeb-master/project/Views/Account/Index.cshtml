@@ -1,12 +1,9 @@
 ﻿
     <div class="container">
+        <h4>User List: @Model.Count Accounts</h4>
         <table class="table table-bordered text-center">
             <tr>
-                <th>User Email</th>
-            </tr>
-            
-            <tr>
-                <th>Id</th>
+              @*  <th>Id</th>*@
                 <th>Email</th>
                 <th>Menu</th>
             </tr>
@@ -14,7 +11,7 @@
             @foreach (var account in Model)
         {
             <tr>
-                <td>@account.Id</td>
+            @*    <td>@account.Id</td>*@
                 <td>@account.Email</td>
 
               

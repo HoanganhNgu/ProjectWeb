@@ -19,14 +19,14 @@ namespace project.Controllers
             this.context = context;
         }
         [Authorize(Roles = "Customer")]
-        public IActionResult MakeOrder(int book, int stock, int price)
+        public IActionResult MakeOrder(int book, int stock, int price, string name)
         {
             var order = new Order();
-            
 
-            
-            
 
+
+
+            order.Customer = name;
             order.OrderStock = stock;
             order.BookId = book;
             order.OrderDate = DateTime.Now;
@@ -38,39 +38,12 @@ namespace project.Controllers
         [Authorize(Roles = "StoreOwner")]
         public IActionResult Index()
         {
-            ViewBag.User = context.Users.ToList();
-            var claimIdentity = (ClaimsIdentity)User.Identity;
-            var claims = claimIdentity.FindFirst(ClaimTypes.NameIdentifier);
-
-
-            string currentUserId = claims.Value;
-            ViewBag.Hihi = currentUserId;
+    
 
             var orders = context.Orders.ToList();
             return View(orders);
         }
 
-        [Authorize(Roles = "StoreOwner")]
-        [HttpGet]
-        public IActionResult IsAccepted(int id)
-        {
-            
-            var order = context.Orders.Find(id);
-            return View(order);
-        }
-     
-        [HttpPost]
-        public IActionResult IsAccepted(Order order)
-        {
-            if (ModelState.IsValid)
-            {
-                context.Orders.Update(order);
-                context.SaveChanges();
-               
-                return RedirectToAction("index");
-            }
-            return View(order);
-        }
 
         [Authorize(Roles = "StoreOwner")]
         public IActionResult Delete(int? id)
@@ -87,10 +60,6 @@ namespace project.Controllers
                 context.Orders.Remove(order);
 
                 context.SaveChanges();
-
-
-                TempData["Message"] = "Delete order successfully !";
-
 
                 return RedirectToAction(nameof(Index));
             }

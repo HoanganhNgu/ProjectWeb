@@ -17,28 +17,7 @@
         <input readonly class="form-control" asp-for="@Model.OrderStock" />
         <span class="text-danger" asp-validation-for="@Model.OrderStock"></span>
     </div>
-    <div class="form-group">
-        <label class="h4 text-success" asp-for="@Model.IsAccepted"></label><br />
-        @if (Model.IsAccepted == 'A')
-        {
-            <span>Accept </span>
 
-            <input type="radio" name="IsAccepted" value='A' checked>
-            <span>Decline </span>
-
-            <input type="radio" name="IsAccepted" value='D'>
-        }
-        else
-        {
-            <span>Accept</span>
-
-            <input type="radio" name="IsAccepted" value='A'>
-            <span>Decline </span>
-
-            <input type="radio" name="IsAccepted" value='D' checked>
-        }
-        <span class="text-danger" asp-validation-for="@Model.IsAccepted"></span>
-    </div>
     <div class="form-group">
         <input type="submit" class="btn btn-warning" value="Submit" />
     </div>

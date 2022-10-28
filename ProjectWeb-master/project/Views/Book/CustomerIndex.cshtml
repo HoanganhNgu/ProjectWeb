@@ -20,7 +20,7 @@
                 </tr>
                 <tr>
                     <th colspan="3">
-                        <form method="post" asp-controller="Book" asp-action="Search">
+                        <form method="post" asp-controller="Book" asp-action="CUSSearch">
                             <input class="form-control" type="search" placeholder="Search by name" name="keyword" required>
                         </form>
                     </th>
@@ -88,6 +88,8 @@
 
                                 @*<a class="btn" asp-controller="Order" asp-action="MakeOrder">*@
                                     <form method="post" asp-controller="Order" asp-action="MakeOrder">
+                                    <input type="hidden" name="name" value="@User.Identity.Name">
+
                                     <input type="hidden" name="book" value="@book.Id">
                                     <input type="number" name="stock" min="1" max="@book.Stock">
                                     <input type="hidden" name="price" value="@book.Price"><br>

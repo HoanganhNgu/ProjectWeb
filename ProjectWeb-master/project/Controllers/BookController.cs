@@ -112,7 +112,7 @@ namespace project.Controllers
                 context.Books.Update(book);
                 context.SaveChanges();
                 TempData["Message"] = "Edit book successfully !";
-                return RedirectToAction("index");
+                return RedirectToAction("StoreOwnerIndex");
             }
             else
             {
@@ -144,15 +144,23 @@ namespace project.Controllers
 
 
         [HttpPost]
-        public IActionResult Search(string keyword)
+        public IActionResult SOSearch(string keyword)
         {
             var books = context.Books.Where(b => b.Name.Contains(keyword)).ToList();
             if (books.Count == 0)
             {
                 TempData["Message"] = "No book found";
             }
-            return View("Index", books);
+            return View("StoreOwnerIndex", books);
         }
-
+        public IActionResult CUSSearch(string keyword)
+        {
+            var books = context.Books.Where(b => b.Name.Contains(keyword)).ToList();
+            if (books.Count == 0)
+            {
+                TempData["Message"] = "No book found";
+            }
+            return View("CustomerIndex", books);
+        }
     }
 }
